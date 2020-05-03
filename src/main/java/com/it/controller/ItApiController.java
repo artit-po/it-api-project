@@ -28,8 +28,10 @@ public class ItApiController {
 	}
 	
 	@PostMapping("/student/save")
-	public ResponseEntity<StudentDto> saveStudent(@RequestBody StudentDto studentDto){
-		//wait for service
+	public ResponseEntity<StudentDto> saveStudent(@RequestBody StudentDto studentDto) throws Exception{
+		if (studentDto != null) {
+			studentService.saveStudent(studentDto);
+		}		
 		return new ResponseEntity<StudentDto>(studentDto, HttpStatus.OK);
 	}
 	
