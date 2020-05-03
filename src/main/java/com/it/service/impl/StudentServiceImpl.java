@@ -20,8 +20,11 @@ public class StudentServiceImpl implements StudentService {
 
 	@Override
 	public StudentDto saveStudent(StudentDto studentDto) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		if (studentDto != null) {
+			StudentEntity entity = convertDtoToEntit(studentDto);
+			studentRepository.save(entity);
+		}
+		return studentDto;
 	}
 
 	@Override
@@ -64,6 +67,24 @@ public class StudentServiceImpl implements StudentService {
 			dto.setLine(entity.getLine());			
 		}
 		return dto;		
+	}
+	
+	private StudentEntity convertDtoToEntit(StudentDto dto) {
+		StudentEntity entity = new StudentEntity();
+		if (dto != null) {
+			entity.setsId(dto.getsId());
+			entity.setCitizen(dto.getCitizen());
+			entity.setPrefix(dto.getPrefix());
+			entity.setName(dto.getName());
+			entity.setLastName(dto.getLastName());
+			entity.setNickName(dto.getNickName());
+			entity.setGender(dto.getGender());
+			entity.setPhone(dto.getPhone());
+			entity.setEmail(dto.getEmail());
+			entity.setFacebook(dto.getFacebook());
+			entity.setLine(dto.getLine());			
+		}
+		return entity;		
 	}
 
 }
