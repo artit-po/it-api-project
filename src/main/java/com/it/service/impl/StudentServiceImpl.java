@@ -20,20 +20,34 @@ public class StudentServiceImpl implements StudentService {
 
 	@Override
 	public StudentDto saveStudent(StudentDto studentDto) throws Exception {
-		// TODO Auto-generated method stub
+		if (studentDto != null) {
+			StudentEntity entity = convertDtoToEntit(studentDto);
+			studentRepository.save(entity);
+		} else {
+			throw new NullPointerException("saveStudent :: StudentDto is Null!");
+		}
 		return studentDto;
 	}
 
 	@Override
 	public StudentDto updateStudent(StudentDto studentDto) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		if (studentDto != null && studentDto.getsId() > 0) {
+			StudentEntity entity = convertDtoToEntit(studentDto);
+			studentRepository.save(entity);
+		} else {
+			throw new NullPointerException("updateStudent :: StudentDto is Null or SId < 0 !");
+		}
+		return studentDto;
 	}
 
 	@Override
 	public Integer deleteStudentBySId(Integer sId) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		if (sId > 0) {
+			studentRepository.deleteById(sId);
+		} else {
+			throw new NullPointerException("deleteStudentBySId :: sId < 0 ! ");
+		}
+		return sId;
 	}
 
 	@Override

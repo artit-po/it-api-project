@@ -29,19 +29,19 @@ public class ItApiController {
 	
 	@PostMapping("/student/save")
 	public ResponseEntity<StudentDto> saveStudent(@RequestBody StudentDto studentDto) throws Exception{		
-		//wait for service
+		studentService.saveStudent(studentDto);
 		return new ResponseEntity<StudentDto>(studentDto, HttpStatus.OK);
 	}
 	
 	@PostMapping("/student/update")
-	public ResponseEntity<StudentDto> updateStudent(@RequestBody StudentDto studentDto){
-		//wait for service
+	public ResponseEntity<StudentDto> updateStudent(@RequestBody StudentDto studentDto) throws Exception{
+		studentService.updateStudent(studentDto);
 		return new ResponseEntity<StudentDto>(studentDto, HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/student/{sId}")
-	public ResponseEntity<Integer> deleteStudentBySId(@PathVariable Integer sId){
-		//wait for service		
+	public ResponseEntity<Integer> deleteStudentBySId(@PathVariable Integer sId) throws Exception{
+		studentService.deleteStudentBySId(sId);	
 		return new ResponseEntity<Integer>(sId, HttpStatus.OK);		
 	}
 	
