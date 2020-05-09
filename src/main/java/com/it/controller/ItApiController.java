@@ -45,6 +45,12 @@ public class ItApiController {
 		return new ResponseEntity<Integer>(sId, HttpStatus.OK);		
 	}
 	
+	@GetMapping("/student/{sId}")
+	public ResponseEntity<StudentDto> getStudentBySId(@PathVariable Integer sId) throws Exception {
+		StudentDto student = studentService.getStudentBySId(sId);
+		return new ResponseEntity<StudentDto>(student, HttpStatus.OK);
+	}
+	
 	@GetMapping("/students")
 	public ResponseEntity<List<StudentDto>> getAllStudent() throws Exception{
 		List<StudentDto> response = studentService.selectAllStudent();

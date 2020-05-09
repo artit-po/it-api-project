@@ -98,4 +98,18 @@ public class StudentServiceImpl implements StudentService {
 		return entity;		
 	}
 
+	@Override
+	public StudentDto getStudentBySId(Integer sId) throws Exception {
+		StudentDto student = new StudentDto();
+		if (sId > 0) {
+			StudentEntity entity = studentRepository.findById(sId).get();
+			if (entity != null) {
+				student = convertEntityToDto(entity);
+			}
+		} else {
+			throw new NullPointerException("getStudentBySId :: sId < 0! ");
+		}
+		return student;
+	}
+
 }

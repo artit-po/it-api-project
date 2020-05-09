@@ -13,4 +13,6 @@ public interface StudentService {
 	public Integer deleteStudentBySId(Integer sId) throws Exception;
 
 	public List<StudentDto> selectAllStudent() throws Exception;
+	
+	public StudentDto getStudentBySId(Integer sId) throws Exception;
 }
