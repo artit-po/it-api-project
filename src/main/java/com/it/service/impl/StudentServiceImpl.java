@@ -20,10 +20,7 @@ public class StudentServiceImpl implements StudentService {
 
 	@Override
 	public StudentDto saveStudent(StudentDto studentDto) throws Exception {
-		if (studentDto != null) {
-			StudentEntity entity = convertDtoToEntit(studentDto);
-			studentRepository.save(entity);
-		}
+		// TODO Auto-generated method stub
 		return studentDto;
 	}
 
